@@ -4,4 +4,4 @@ Populates mLab database through Mongoose with data fetched from few external api
 
 Implements a rest api with data from mLab for Redux to work with. 
 
-Used create-react-app for the Front End, which is structures in app folder.
+Used create-react-app for the Front End, structured in app folder.
