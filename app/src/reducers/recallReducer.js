@@ -1,8 +1,4 @@
-const state = {
-  isFetching: false,
-  recalls: []
-};
-function recallsReducer(state, action) {
+function recallsReducer(state = { isFetching: false, recalls: [] }, action) {
   switch (action.type) {
     case "FETCHING":
       return Object.assign({}, state, { isFetching: true });

@@ -7,17 +7,23 @@ import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import { createViewportReducer } from "redux-map-gl";
+
 import recallReducer from "./reducers/recallReducer";
 
+const rootReducer = combineReducers({
+  map: createViewportReducer(),
+  data: recallReducer
+});
 const store = createStore(
-  recallReducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   composeWithDevTools(applyMiddleware(thunk))
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App store={store} />
   </Provider>,
   document.getElementById("root")
 );
