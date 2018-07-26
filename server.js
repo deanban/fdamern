@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const index = require("./routes/api/v1/index");
 const db = require("./db/config/keys").mongoURI;
 
@@ -14,6 +15,7 @@ mongoose
   .then(() => console.log("mongodb connection success"))
   .catch(error => console.log(error));
 
+app.use(cors());
 app.use("/api/v1", index);
 
 const port = process.env.PORT || 3001;

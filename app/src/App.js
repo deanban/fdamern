@@ -22,6 +22,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+  // console.log("appmapstate", state);
   return {
     recalls: state.data
   };
