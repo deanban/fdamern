@@ -33,11 +33,10 @@ function fetchedRecalls(data) {
 // }
 
 export function fetchData() {
-  return function(dispatch) {
+  return async function(dispatch) {
     dispatch(fetchingRecalls());
-    fetch("http://localhost:3001/api/v1/recalls", {
-      method: "GET",
-      cors: "no-cors"
+    await fetch("http://localhost:3001/api/v1/recalls", {
+      method: "GET"
     })
       .then(resp => resp.json())
       .then(json => {

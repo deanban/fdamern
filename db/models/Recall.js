@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const fetchData = require("../seed");
+// const fetchData = require("../seed");
 const Schema = mongoose.Schema;
 
 const dataSchema = new Schema({
@@ -16,7 +16,7 @@ const dataSchema = new Schema({
   product_description: String,
   report_date: String,
   classification: String,
-  open_fda: Object,
+  open_fda: Map,
   recall_number: String,
   recalling_firm: String,
   initial_firm_notification: String,
@@ -29,4 +29,4 @@ const dataSchema = new Schema({
   status: String
 });
 
-module.exports = recallData = mongoose.model("recalls", dataSchema);
+module.exports = mongoose.model("Recall", dataSchema);

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const recalls = require("../../../db/controllers/recall_controller");
-const cors = require("cors");
+// const cors = require("cors");
 
 router.get("/index", (req, res) => {
   res.json({

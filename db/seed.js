@@ -4,7 +4,7 @@ const db = require("./config/keys").mongoURI;
 const fetch = require("node-fetch");
 const URLS = require("./config/seedURLs");
 
-let resultData;
+let resultData, recalls;
 let saveCounter = 0;
 
 mongoose
@@ -20,7 +20,7 @@ URLS.map(async url => {
     resultData = [...json.results];
     // console.log(resultData);
     for (let i = 0; i < resultData.length; i++) {
-      let temp = new Recall({
+      recalls = new Recall({
         country: resultData[i].country,
         city: resultData[i].city,
         reason_for_recall: resultData[i].reason_for_recall,
@@ -47,7 +47,7 @@ URLS.map(async url => {
         status: resultData[i].status
       });
       console.log(temp);
-      temp.save(() => {
+      recalls.save(() => {
         saveCounter++;
         if (saveCounter === resultData.length) {
           mongoose
