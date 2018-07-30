@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import RecallContainer from "./components/RecallContainer";
+// import RecallContainer from "./components/RecallContainer";
 // import ReactMapGL from "react-map-gl";
+import MapContainer from "./components/MapContainer";
 import { fetchData } from "./actions/recallActions";
 import { connect } from "react-redux";
 
@@ -15,7 +16,8 @@ class App extends Component {
     console.log("appstate ", this.props.store.getState());
     return (
       <div className="App">
-        <RecallContainer store={this.props.store} />
+        {/* <RecallContainer store={this.props.store} /> */}
+        <MapContainer />
       </div>
     );
   }
