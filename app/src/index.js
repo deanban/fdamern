@@ -10,10 +10,12 @@ import thunk from "redux-thunk";
 import { createViewportReducer } from "redux-map-gl";
 
 import recallReducer from "./reducers/recallReducer";
+import searchReducer from "./reducers/searchReducer";
 
 const rootReducer = combineReducers({
   map: createViewportReducer(),
-  data: recallReducer
+  data: recallReducer,
+  searchTerm: searchReducer
 });
 const store = createStore(
   rootReducer,

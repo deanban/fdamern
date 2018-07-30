@@ -48,6 +48,7 @@ export default class MapContainer extends Component {
   };
 
   render() {
+    console.log("Map: ", this.props.store.getState());
     return (
       <MapGL
         {...this.state.viewport}
