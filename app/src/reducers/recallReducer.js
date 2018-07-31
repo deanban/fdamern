@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 function recallsReducer(state = { isFetching: false, recalls: [] }, action) {
   switch (action.type) {
     case "FETCHING":
@@ -7,6 +9,11 @@ function recallsReducer(state = { isFetching: false, recalls: [] }, action) {
         recalls: action.payload,
         isFetching: false
       });
+    case "FIND_DATA":
+      return {
+        ...state,
+        recalls: _.uniqBy(state.recalls.concat(action.payload), "_id")
+      };
     default:
       return state;
   }

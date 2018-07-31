@@ -11,6 +11,13 @@ function fetchedRecalls(data) {
   };
 }
 
+function findData(data) {
+  return {
+    type: "FIND_DATA",
+    payload: data
+  };
+}
+
 // export function fetchData() {
 //   return function(dispatch) {
 //     dispatch(fetchingRecalls());
@@ -40,7 +47,9 @@ export function fetchData() {
     })
       .then(resp => resp.json())
       .then(json => {
+        console.log("fetch", json);
         dispatch(fetchedRecalls(json));
+        dispatch(findData(json));
       });
   };
 }
