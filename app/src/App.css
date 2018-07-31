@@ -6,6 +6,7 @@ body {
   width: 600px;
   margin: 30px auto;
 }
+
 .input-highlight {
   font-size: 30px;
   user-select: none;
@@ -38,6 +39,12 @@ input {
 input:focus + .input-highlight {
   border-top: 2px solid #ff004c;
 }
+
+/* .found {
+  position: relative;
+  min-width: 100%;
+  border-radius: 10px;
+} */
 
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;

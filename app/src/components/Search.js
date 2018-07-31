@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import RecallList from "./RecallList";
 
 import { setSearchTerm } from "../actions/searchAction";
 
 class Search extends Component {
   state = {
-    searchStr: "",
-    recalls: []
+    searchStr: ""
+    // recalls: []
   };
 
   handleChange(event) {
     this.setState(
       {
-        searchStr: event.target.value,
-        recalls: this.props.data.recalls
+        searchStr: event.target.value
+        // recalls: this.props.data.recalls
       },
       () => {
         this.props.setSearchTerm(this.state.searchStr);
@@ -24,26 +25,29 @@ class Search extends Component {
   render() {
     console.log("search ", this.state);
     return (
-      <div className="input-wrapper">
-        <input
-          onChange={event => this.handleChange(event)}
-          placeholder="Search..."
-          value={this.state.searchStr}
-          spellCheck={false}
-        />
-        <span className="input-highlight">
-          {this.state.searchStr.replace(/ /g, "\u00a0")}
-        </span>
+      <div>
+        <div className="input-wrapper">
+          <input
+            onChange={event => this.handleChange(event)}
+            placeholder="Search..."
+            value={this.state.searchStr}
+            spellCheck={false}
+          />
+          <span className="input-highlight">
+            {this.state.searchStr.replace(/ /g, "\u00a0")}
+          </span>
+        </div>
+        <RecallList />
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    data: state.data
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     data: state.data
+//   };
+// }
 
 function mapDispatchToProps(dispatch, state) {
   return {
@@ -54,6 +58,6 @@ function mapDispatchToProps(dispatch, state) {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Search);
