@@ -24,12 +24,17 @@ class Search extends Component {
   render() {
     console.log("search ", this.state);
     return (
-      <input
-        type="text"
-        placeholder="enter state or city"
-        onChange={event => this.handleChange(event)}
-        value={this.state.searchStr}
-      />
+      <div className="input-wrapper">
+        <input
+          onChange={event => this.handleChange(event)}
+          placeholder="Search..."
+          value={this.state.searchStr}
+          spellCheck={false}
+        />
+        <span className="input-highlight">
+          {this.state.searchStr.replace(/ /g, "\u00a0")}
+        </span>
+      </div>
     );
   }
 }
