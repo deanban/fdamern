@@ -13,12 +13,10 @@ class Search extends Component {
   };
 
   handleChange(event) {
-    console.log("handle change", this.props.data.recalls);
-    let newlyDisplayed = _.filter(
-      this.props.data.recalls,
-      recall =>
-        recall.city.includes(event.target.value.toLowerCase()) ||
-        recall.state.includes(event.target.value.toUpperCase())
+    // console.log("handle change", this.props.data.recalls);
+    let newlyDisplayed = _.filter(this.props.data.recalls, recall =>
+      // recall.city.includes(event.target.value.toLowerCase()) ||
+      recall.state.includes(event.target.value.toUpperCase())
     );
     this.setState(
       {
