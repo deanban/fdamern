@@ -4,35 +4,32 @@ import React, { Component } from "react";
 
 export default class RecallList extends Component {
   renderList() {
-    return this.props.current.map((recall, index) => {
-      return (
-        <div>
-          <table>
-            <tr>
-              <th>State</th>
-              {/* <td>{recall.state}</td> */}
-              <th>City</th>
-              {/* <td>{recall.city}</td> */}
-              <th>Type</th>
-              {/* <td>{recall.product_type}</td> */}
-              <th>Reason for Recall</th>
-              {/* <td>{recall.reason_for_recall}</td> */}
-              <th>Status</th>
-              {/* <td>{recall.status}</td> */}
-            </tr>
-
-            <tr>
-              <td>{recall.state}</td>
-              <td>{recall.city}</td>
-              <td>{recall.product_type}</td>
-              <td>{recall.reason_for_recall}</td>
-              <td>{recall.status}</td>
-            </tr>
-          </table>
-        </div>
-      );
-    });
+    return (
+      <table>
+        <tbody>
+          <tr>
+            <th>State</th>
+            <th>City</th>
+            <th>Type</th>
+            <th>Reason for Recall</th>
+            <th>Status</th>
+          </tr>
+          {this.props.current.map((recall, index) => {
+            return (
+              <tr>
+                <td>{recall.state}</td>
+                <td>{recall.city}</td>
+                <td>{recall.product_type}</td>
+                <td>{recall.reason_for_recall}</td>
+                <td>{recall.status}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
   }
+
   render() {
     console.log("current display", this.props);
     return <div>{this.renderList()}</div>;
