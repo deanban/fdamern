@@ -29,9 +29,9 @@ class Search extends Component {
       ...this.props.data.recalls.filter(recall =>
         recall.state.toLowerCase().includes(event.target.value.toLowerCase())
       )
-    ].sort(recall => (recall.status === "Terminated" ? 1 : -1));
+    ];
 
-    // newlyDisplayed.sort(recall => (recall.status === "Terminated" ? 1 : -1));
+    newlyDisplayed.sort(recall => (recall.status === "Terminated" ? 1 : -1));
 
     console.log("newlyDisplayed", newlyDisplayed);
 
