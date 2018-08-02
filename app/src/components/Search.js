@@ -8,37 +8,47 @@ import { setSearchTerm } from "../actions/searchAction";
 class Search extends Component {
   state = {
     searchStr: "",
-    currentDisplay: this.props.data.recalls
-    // recalls: []
+    currentDisplay: this.props.data.recalls,
+    selected: "location",
+    sortBy: "status"
   };
 
   handleChange(event) {
-    // console.log("handle change", this.props.data.recalls);
+    let newDisplay;
 
-    // let newlyDisplayed = _.filter(
-    //   this.props.data.recalls,
-    //   recall =>
-    //     recall.city.includes(event.target.value.toLowerCase()) ||
-    //     recall.state.includes(event.target.value.toUpperCase())
-    // );
+    switch (this.state.selected) {
+      case "location":
+        newDisplay = this.props.data.recalls.filter(recall => {
+          return (
+            recall.city
+              .toLowerCase()
+              .includes(event.target.value.toLowerCase()) ||
+            recall.state
+              .toLowerCase()
+              .includes(event.target.value.toLowerCase())
+          );
+        });
+        break;
+      case "product":
+        newDisplay = this.props.data.recalls.filter(recall => {
+          return recall.product_description
+            .toLowerCase()
+            .includes(event.target.value.toLowerCase());
+        });
+    }
 
-    let newlyDisplayed = [
-      ...this.props.data.recalls.filter(recall =>
-        recall.city.toLowerCase().includes(event.target.value.toLowerCase())
-      ),
-      ...this.props.data.recalls.filter(recall =>
-        recall.state.toLowerCase().includes(event.target.value.toLowerCase())
-      )
-    ];
+    newDisplay.sort(recall => (recall.status === "Terminated" ? 1 : -1));
 
-    newlyDisplayed.sort(recall => (recall.status === "Terminated" ? 1 : -1));
+    newDisplay.sort((a, b) =>
+      a[this.state.sortBy].localeCompare(b[this.state.sortBy])
+    );
 
-    console.log("newlyDisplayed", newlyDisplayed);
+    console.log("newlyDisplayed", newDisplay);
 
     this.setState(
       {
         searchStr: event.target.value,
-        currentDisplay: newlyDisplayed
+        currentDisplay: newDisplay
         // recalls: this.props.data.recalls
       },
       () => {
@@ -47,14 +57,42 @@ class Search extends Component {
     );
   }
 
+  handleSelect = e => {
+    this.setState({
+      selected: e.target.value
+    });
+  };
+
+  setPlaceholderText() {
+    switch (this.state.selected) {
+      case "location":
+        return "Please Enter a City or State";
+      case "product":
+        return "Please Enter a Product";
+    }
+  }
+
+  sortBy = val => {
+    this.setState({
+      sortBy: val
+    });
+  };
+
   render() {
     console.log("search ", this.state);
     return (
       <div>
+        <div className="dropdown">
+          Search By:
+          <select value={this.state.selected} onChange={this.handleSelect}>
+            <option value="location">Location</option>
+            <option value="product">Product Description</option>
+          </select>
+        </div>
         <div className="input-wrapper">
           <input
             onChange={event => this.handleChange(event)}
-            placeholder="Please Enter a City or State"
+            placeholder={this.setPlaceholderText()}
             value={this.state.searchStr}
             spellCheck={false}
           />
@@ -63,7 +101,10 @@ class Search extends Component {
           </span>
         </div>
         {this.state.searchStr.length ? (
-          <RecallList current={this.state.currentDisplay} />
+          <RecallList
+            current={this.state.currentDisplay}
+            sortBy={this.sortBy}
+          />
         ) : null}
       </div>
     );
