@@ -8,9 +8,12 @@ export default class RecallList extends Component {
       <table>
         <tbody>
           <tr>
-            <th>State</th>
-            <th>City</th>
-            <th>Type</th>
+            <th onClick={e => this.props.sortBy("state")}>State</th>
+            <th onClick={e => this.props.sortBy("city")}>City</th>
+            <th onClick={e => this.props.sortBy("type")}>Type</th>
+            <th onClick={e => this.props.sortBy("product_description")}>
+              Product
+            </th>
             <th>Reason for Recall</th>
             <th>Status</th>
           </tr>
@@ -20,6 +23,7 @@ export default class RecallList extends Component {
                 <td>{recall.state}</td>
                 <td>{recall.city}</td>
                 <td>{recall.product_type}</td>
+                <td>{recall.product_description}</td>
                 <td>{recall.reason_for_recall}</td>
                 <td>{recall.status}</td>
               </tr>
