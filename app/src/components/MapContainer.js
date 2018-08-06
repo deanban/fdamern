@@ -21,7 +21,7 @@ export default class MapContainer extends Component {
       longitude: -100,
       zoom: 3.5,
       bearing: 0,
-      pitch: 0,
+      pitch: 50,
       width: 500,
       height: 500
     }
