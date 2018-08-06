@@ -4,7 +4,7 @@ import "./App.css";
 // import RecallContainer from "./components/RecallContainer";
 // import ReactMapGL from "react-map-gl";
 import MapContainer from "./components/MapContainer";
-import Search from "./components/Search";
+// import Search from "./components/Search";
 import { fetchData } from "./actions/recallActions";
 import { connect } from "react-redux";
 
@@ -17,9 +17,8 @@ class App extends Component {
     console.log("appstate ", this.props.recalls);
     return (
       <div className="App">
-        {/* <RecallContainer store={this.props.store} /> */}
-        {/* <MapContainer store={this.props.store} /> */}
-        <Search />
+        <MapContainer store={this.props.store} />
+        {/* <Search /> */}
       </div>
     );
   }

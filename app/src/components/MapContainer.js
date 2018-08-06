@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import MapGL, { NavigationControl } from "react-map-gl";
+// import MapMarker from "./MapMarker";
+import Iconlayer from "./Iconlayer";
+import Arclayer from "./Arclayer";
 
 const TOKEN =
   "pk.eyJ1IjoiZGVhbmIiLCJhIjoiY2prMXc2aGo1MGx3aDNxb2dpOXg2a3A5MyJ9.-1wms63S3D4V0WFAerBKQQ";
@@ -58,6 +61,8 @@ export default class MapContainer extends Component {
       >
         <div className="nav" style={navStyle}>
           <NavigationControl onViewportChange={this._updateViewport} />
+          {/* <Iconlayer viewport={this.state.viewport} /> */}
+          <Arclayer viewport={this.state.viewport} />
         </div>
       </MapGL>
     );
