@@ -59,14 +59,15 @@ export default class Iconlayer extends Component {
     const layer = new ArcLayer({
       id: "arc-layer",
       data: this.state.data,
+      opacity: 0.3,
       pickable: true,
-      getStrokeWidth: 12,
+      getStrokeWidth: 2,
       getSourcePosition: d => d.from.coordinates,
       getTargetPosition: d => d.to.coordinates,
-      getSourceColor: d => [Math.sqrt(d.inbound), 140, 0],
-      getTargetColor: d => [Math.sqrt(d.outbound), 140, 0],
-      onHover: ({ object }) =>
-        this.setTooltip(`${object.from.name} to ${object.to.name}`)
+      getSourceColor: d => [0, 128, 255],
+      getTargetColor: d => [255, 0, 128]
+      //   onHover: ({ object }) =>
+      // this.setTooltip(`${object.from.name} to ${object.to.name}`)
     });
 
     return (
