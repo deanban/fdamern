@@ -46,7 +46,7 @@ URLS.map(async url => {
         voluntary_mandated: resultData[i].voluntary_mandated,
         status: resultData[i].status
       });
-      console.log(temp);
+      // console.log(temp);
       recalls.save(() => {
         saveCounter++;
         if (saveCounter === resultData.length) {
