@@ -26,8 +26,8 @@ class MapContainer extends Component {
         height: props.height || window.innerHeight,
         longitude: -100,
         latitude: 37.785164,
-        zoom: 3.5,
-        pitch: 50,
+        zoom: 3,
+        pitch: 60,
         maxZoom: 16
       },
       currentTime: 0,

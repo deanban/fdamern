@@ -9,19 +9,19 @@ export default class Composite extends CompositeLayer {
         data: this.props.data,
         getPosition: this.props.getPickupLocation,
         getColor: d => this.props.pickupColor,
-        radiusScale: 80
+        radiusScale: 300
       }),
       new ScatterplotLayer({
         id: "to",
         data: this.props.data,
         getPosition: this.props.getDropoffLocation,
         getColor: d => this.props.dropoffColor,
-        radiusScale: 80
+        radiusScale: 300
       }),
       new ArcLayer({
         id: "arc",
         data: this.props.data,
-        opacity: 0.5,
+        opacity: 0.3,
         getSourcePosition: this.props.getPickupLocation,
         getTargetPosition: this.props.getDropoffLocation,
         getSourceColor: d => this.props.pickupColor,
