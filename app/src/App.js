@@ -18,7 +18,7 @@ class App extends Component {
     console.log("appstate ", this.props);
     return (
       <div className="App">
-        <MapContainer store={this.props.store} />
+        <MapContainer />
         {/* <Search /> */}
       </div>
     );

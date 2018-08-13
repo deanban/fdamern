@@ -10,7 +10,7 @@ const googleMapsClient = require("@google/maps").createClient({
 });
 
 let saveCounter = 0;
-const resultsArr = [];
+let resultsArr = [];
 
 const URLS = ["http://localhost:3001/api/v1/recalls"];
 
@@ -27,11 +27,12 @@ URLS.map(async url => {
     // console.log(json);
     for (let i = 0; i < json.length; i++) {
       let newObj = {};
-      let address = `${json[i].address_1}, ${json[i].city},${json[i].state}`;
+      let address = `${json[i].address_1}, ${json[i].city}, ${json[i].state}`;
       googleMapsClient
         .geocode({ address })
         .asPromise()
         .then(response => {
+          console.log(json);
           fromCoords = response.json.results[0].geometry.location;
           newObj["from"] = { name: address, coordinates: fromCoords };
 
@@ -51,8 +52,9 @@ URLS.map(async url => {
           console.log(err);
         });
       setTimeout(() => {
+        resultsArr.map(results => console.log(results));
         geocodes = new Geocode({
-          results: resultsArr
+          results: [...resultsArr]
         });
         geocodes.save(() => {
           saveCounter++;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DeckGL, { ArcLayer } from "deck.gl";
+import jsondata from "../../src/geo.json";
 
 const tooltipStyle = {
   position: "absolute",
@@ -23,13 +24,12 @@ export default class Iconlayer extends Component {
     tooltip: null
   };
 
-  async getDummyData() {
+  async _getData() {
     await fetch(
-      "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/website/bart-segments.json"
+      "https://raw.githubusercontent.com/deanban/fdamern/master/geo.json"
     )
       .then(resp => resp.json())
       .then(data => this.setState({ data }));
-    //   .then(props => this._renderTooltip());
   }
 
   setTooltip(x, y, object) {
@@ -45,7 +45,9 @@ export default class Iconlayer extends Component {
             {tooltip
               .toString()
               .split("\n")
-              .map((str, i) => <p key={i}>{str}</p>)}
+              .map((str, i) => (
+                <p key={i}>{str}</p>
+              ))}
           </div>
         )
       );
@@ -54,14 +56,16 @@ export default class Iconlayer extends Component {
   }
 
   render() {
-    this.getDummyData();
+    this._getData();
+    // DATA_ARR.map(d => d.map(t => console.log(t)));
+    // console.log("arc", this.state.data);
     this._renderTooltip();
     const layer = new ArcLayer({
       id: "arc-layer",
       data: this.state.data,
-      opacity: 0.3,
-      pickable: true,
-      getStrokeWidth: 2,
+      opacity: 0.5,
+      // pickable: true,
+      getStrokeWidth: 5,
       getSourcePosition: d => d.from.coordinates,
       getTargetPosition: d => d.to.coordinates,
       getSourceColor: d => [0, 128, 255],
