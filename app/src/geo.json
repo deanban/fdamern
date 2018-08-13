@@ -1,0 +1,56 @@
+[
+  {
+    "from": {
+      "name": "100 Pirson Pkwy, Tonawanda, NY",
+      "coordinates": [42.995614, -78.8938965]
+    },
+    "to": {
+      "coordinates": []
+    }
+  },
+  {
+    "from": {
+      "name": "1058 King Industrial Dr, Marietta, GA",
+      "coordinates": [40.4314702, -80.1404831]
+    },
+    "to": {
+      "coordinates": []
+    }
+  },
+  {
+    "from": {
+      "name": "726 S 12th St., Milwaukee, WI",
+      "coordinates": [42.21205980000001, -73.3442743]
+    },
+    "to": {
+      "coordinates": []
+    }
+  },
+  {
+    "from": {
+      "name": "20 Crissey Rd, Great Barrington, MA",
+      "coordinates": [33.9771758, -84.53909]
+    },
+    "to": {
+      "coordinates": []
+    }
+  },
+  {
+    "from": {
+      "name": "18 Food Mart Rd, Boston, MA",
+      "coordinates": [42.3358756, -71.0632409]
+    },
+    "to": {
+      "coordinates": []
+    }
+  },
+  {
+    "from": {
+      "name": "600 Boyce Rd, Pittsburgh, PA",
+      "coordinates": [40.4314702, -80.140483]
+    },
+    "to": {
+      "coordinates": []
+    }
+  }
+]

@@ -11,6 +11,19 @@ function fetchedRecalls(data) {
   };
 }
 
+function fetchingGeocodes() {
+  return {
+    type: "FETCHING_GEOCODES"
+  };
+}
+
+function fetchedGeocodes(data) {
+  return {
+    type: "FETCHED_GEOCODES",
+    payload: data
+  };
+}
+
 function findData(data) {
   return {
     type: "FIND_DATA",
@@ -25,15 +38,18 @@ function getPlaces() {
   };
 }
 
-// function getGeocode() {
-//   return async function(dispatch){
-//     await fetch('http://localhost:3001/api/v1/geocodes', {
-//       method: 'GET'
-//     })
-//     .then(resp => resp.json())
-//     .then(rest => )
-//   };
-// }
+export function fetchGeocodes() {
+  return async function(dispatch) {
+    dispatch(fetchingGeocodes());
+    await fetch("http://localhost:3001/api/v1/geocodes", {
+      method: "GET"
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        dispatch(fetchedGeocodes(data));
+      });
+  };
+}
 
 export function fetchData() {
   return async function(dispatch) {
