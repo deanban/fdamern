@@ -12,14 +12,17 @@ export function clusterPoints(data, accessors) {
       // debugger;
     }
   });
-  console.log(data);
-  console.log(allPoints);
+  // console.log(data);
+  // console.log(allPoints);
 
   turf.clustersKmeans(turf.featureCollection(allPoints)).features.forEach(p => {
-    const { index, key, centroid } = p.properties;
+    const { index, key } = p.properties;
+    const centroid = p.geometry.coordinates;
+    // console.log(p.properties);
     clusteredData[index][key] = centroid;
     // debugger;
   });
-
+  // console.log(clusteredData);
+  // debugger;
   return clusteredData;
 }
