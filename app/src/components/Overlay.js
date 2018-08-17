@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DeckGL from "deck.gl";
-import Composite from "./Composite";
+import CompositeClusterLayer from "./Composite-cluster-layer";
 
 export default class DeckGLOverlay extends Component {
   render() {
@@ -9,7 +9,7 @@ export default class DeckGLOverlay extends Component {
     }
 
     const layers = [
-      new Composite({
+      new CompositeClusterLayer({
         id: "Overlay",
         data: this.props.data,
         pickupColor: [0, 128, 255],
