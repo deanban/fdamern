@@ -113,3 +113,21 @@ export default connect(
   mapStateToProps,
   null
 )(MapContainer);
+
+{
+  /*<div>
+  <MapGL
+    {...viewport}
+    mapStyle={MAPBOX_STYLE}
+    onViewportChange={this._onViewportChange}
+    mapboxApiAccessToken={MAPBOX_TOKEN}
+  >
+    <div className="nav" style={navStyle}>
+      <NavigationControl onViewportChange={this._onViewportChange} />
+      <Overlay viewport={viewport} data={this.state.data} />
+      <Arclayer viewport={viewport} />
+      <Iconlayer viewport={viewport} />
+    </div>
+  </MapGL>
+</div>*/
+}

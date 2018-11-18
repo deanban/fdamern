@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: whitesmoke;
-}
+} */
 .input-wrapper {
   position: relative;
   width: 600px;
@@ -89,8 +89,8 @@ tr:nth-child(even) {
   margin: 0;
   background: #000;
 } */
-/*
-.control-panel {
+
+/* .control-panel {
   position: absolute;
   top: 0;
   right: 0;
